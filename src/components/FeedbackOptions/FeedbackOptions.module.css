@@ -1,0 +1,16 @@
+.btn__list {
+ display: flex;
+ justify-content: center;
+}
+
+.btn {
+ padding: 8px 25px;
+ border-radius: 10px;
+ background-color: #598295;
+ color: white;
+ border: none;
+ border: 2px solid #e9988a;
+}
+.btn:not(last-child) {
+ margin-right: 10px;
+}

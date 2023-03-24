@@ -1,0 +1,10 @@
+.statistics__list {
+ margin-top: 10px;
+ list-style: none;
+ text-align: left;
+ font-size: 18px;
+ padding: 0;
+ display: flex;
+ flex-direction: column;
+ gap: 7px;
+}
