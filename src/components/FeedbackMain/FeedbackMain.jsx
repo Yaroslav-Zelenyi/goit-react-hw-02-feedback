@@ -1,6 +1,4 @@
 import { Component } from 'react';
-import { countTotalFeedback } from '../../utils/countTotalFeedback';
-import { countPositiveFeedbackPercentage } from '../../utils/countPositiveFeedback';
 import { FeedbackOptions } from '../FeedbackOptions/FeedbackOptions';
 import { Section } from 'components/Section/Section';
 import { Statistics } from 'components/Statistics/Statistics';
@@ -62,6 +60,15 @@ class FeedbackMain extends Component {
       </div>
     );
   }
+}
+
+function countTotalFeedback(state) {
+  const values = Object.values(state);
+  return values.reduce((acc, value) => acc + value);
+}
+
+function countPositiveFeedbackPercentage(total, good) {
+  return total === 0 ? '0' : Math.round((good / total) * 100) + '%';
 }
 
 export default FeedbackMain;
