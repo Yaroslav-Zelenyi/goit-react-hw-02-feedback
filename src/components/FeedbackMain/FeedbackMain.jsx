@@ -32,6 +32,18 @@ class FeedbackMain extends Component {
   handleClick = value => {
     this.setState(prev => ({ [value]: prev[value] + 1 }));
   };
+
+  countTotalFeedback = () => {
+    const values = Object.values(this.state);
+  return values.reduce((acc, value) => acc + value);
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const { good } = this.state;
+    const total = this.countTotalFeedback();
+    return total === 0 ? '0' : Math.round((good / total) * 100);
+  };
+
   render() {
     return (
       <div className={css.main}>
@@ -42,16 +54,13 @@ class FeedbackMain extends Component {
           />
         </Section>
         <Section title="Statistics">
-          {this.chackFeedback() ? (
+          {this.countTotalFeedback() ? (
             <Statistics
               good={this.state.good}
               neutral={this.state.neutral}
               bad={this.state.bad}
-              total={countTotalFeedback(this.state)}
-              positivePercentage={countPositiveFeedbackPercentage(
-                countTotalFeedback(this.state),
-                this.state.good
-              )}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
             />
           ) : (
             <Notification message="There is no feedback" />
@@ -60,15 +69,6 @@ class FeedbackMain extends Component {
       </div>
     );
   }
-}
-
-function countTotalFeedback(state) {
-  const values = Object.values(state);
-  return values.reduce((acc, value) => acc + value);
-}
-
-function countPositiveFeedbackPercentage(total, good) {
-  return total === 0 ? '0' : Math.round((good / total) * 100) + '%';
 }
 
 export default FeedbackMain;

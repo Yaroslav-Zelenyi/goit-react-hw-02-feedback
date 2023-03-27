@@ -8,17 +8,16 @@ export function Statistics({good, neutral, bad, total, positivePercentage}) {
         <li>Neutral: {neutral}</li>
         <li>Bad: {bad}</li>
         <li>Total: {total}</li>
-        <li>Positive feedback: {positivePercentage}</li>
+        <li>Positive feedback: {positivePercentage}%</li>
       </ul>
     );
   }
   Statistics.propTypes = {
-    good: PropTypes.number,
-    neutral: PropTypes.number,
-    bad: PropTypes.number,
-    total: PropTypes.number,
-    positivePercentage: PropTypes.string,
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    positivePercentage: PropTypes.number.isRequired,
   };
     
-  
 
